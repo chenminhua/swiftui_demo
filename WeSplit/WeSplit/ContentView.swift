@@ -19,38 +19,57 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let students = ["Harry", "Hermione", "Ron"]
+    let tipPercentages = [10, 15, 20, 25, 0]
     
-    // @State allows us to work around the limitation of structs: we know we can’t change their properties because structs are fixed, but @State allows that value to be stored separately by SwiftUI in a place that can be modified.
-    @State private var tapCount = 0
-    @State private var name = ""
-    @State private var selectedStudent = 0
+    @State private var checkAmount = ""
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 2
+    
+    var grandTotal :Double {
+        let tipSelection = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+        let tipValue = orderAmount /  100 * tipSelection
+        return orderAmount + tipValue
+    }
+    
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        return grandTotal / peopleCount
+    }
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             Form {
-                // 最多十个儿子
-                Button("Tap count: \(tapCount)") {
-                    self.tapCount += 1
-                }
+                Section {
+                    TextField("Amount", text: $checkAmount)
+                        .keyboardType(.decimalPad)
                 
-                // 双向绑定  two-way binding
-                // In Swift, we mark these two-way bindings with a special symbol so they stand out: we write a dollar sign before them. This tells Swift that it should read the value of the property but also write it back as any changes happen.
-                TextField("enter your name", text: $name)
-                Text("Hello \(name)")
-                
-                VStack {
-                    Picker("Select your student", selection: $selectedStudent) {
-                        ForEach(0 ..< students.count) {
-                            Text(self.students[$0])
+
+                    Picker("Number of people", selection: $numberOfPeople) {
+                        ForEach(2 ..< 100) {
+                            Text("\($0) people")
                         }
                     }
-                    Text("You chose: Student # \(students[selectedStudent])")
                 }
                 
+                Section(header: Text("How much tip do you want to leave?")) {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(0 ..< tipPercentages.count) {
+                            Text("\(self.tipPercentages[$0])%")
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
+                Section(header: Text("Total amount")) {
+                    Text("$\(grandTotal, specifier: "%.2f")")
+                }
+                
+                Section(header: Text("Amount per person")) {
+                    Text("$\(totalPerPerson, specifier: "%.2f")")
+                }
             }
-            .navigationBarTitle("swiftui", displayMode: .inline)
-            // When we attach the .navigationBarTitle() modifier to our form, Swift actually creates a new form that has a navigation bar title plus all the existing contents you provided.
+            .navigationBarTitle("WeSplit")
         }
     }
 }
