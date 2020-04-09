@@ -74,7 +74,6 @@ struct ContentView: View {
         
     }
     
-    
     func calculateBedtime() {
         let model = SleepCalculator()
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
@@ -98,6 +97,7 @@ struct ContentView: View {
         
         showingAlert = true
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
