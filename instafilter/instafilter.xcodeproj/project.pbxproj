@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0C1599244D910900C0D861 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C1598244D910900C0D861 /* ImagePicker.swift */; };
+		CB6361B0244DA13E00A2B108 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6361AF244DA13E00A2B108 /* ImageSaver.swift */; };
 		CBAF0FB9244858C900FA0211 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF0FB8244858C900FA0211 /* AppDelegate.swift */; };
 		CBAF0FBB244858C900FA0211 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF0FBA244858C900FA0211 /* SceneDelegate.swift */; };
 		CBAF0FBD244858C900FA0211 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF0FBC244858C900FA0211 /* ContentView.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB0C1598244D910900C0D861 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CB6361AF244DA13E00A2B108 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		CBAF0FB5244858C900FA0211 /* instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAF0FB8244858C900FA0211 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBAF0FBA244858C900FA0211 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				CBAF0FC3244858CB00FA0211 /* LaunchScreen.storyboard */,
 				CBAF0FC6244858CB00FA0211 /* Info.plist */,
 				CBAF0FC0244858CB00FA0211 /* Preview Content */,
+				CB0C1598244D910900C0D861 /* ImagePicker.swift */,
+				CB6361AF244DA13E00A2B108 /* ImageSaver.swift */,
 			);
 			path = instafilter;
 			sourceTree = "<group>";
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBAF0FB9244858C900FA0211 /* AppDelegate.swift in Sources */,
+				CB0C1599244D910900C0D861 /* ImagePicker.swift in Sources */,
+				CB6361B0244DA13E00A2B108 /* ImageSaver.swift in Sources */,
 				CBAF0FBB244858C900FA0211 /* SceneDelegate.swift in Sources */,
 				CBAF0FBD244858C900FA0211 /* ContentView.swift in Sources */,
 			);
