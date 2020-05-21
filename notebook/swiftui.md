@@ -62,6 +62,7 @@ var body: some View {
 - 为了解决这个问题，swiftui 引入了 @state 这样的一个 property wrapper
 - @State 的属性和view是分开存储的，以实现可修改。
 -  SwiftUI 频繁创建和销毁view, 所以使用struct做view对性能很重要。
+- state变了，swiftUI就会重新计算body。
 
 ```swift
 struct ContentView: View {
@@ -147,7 +148,9 @@ Picker("Tip percentage", selection: $tipPercentage) {
 ```swift
 var body: some View {
     ZStack{
+        // background
         LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
+            // ensuring that the background goes edge to edge.
             .edgesIgnoringSafeArea(.all)
 //            Color.blue.edgesIgnoringSafeArea(.all)
         VStack(spacing: 30) {
@@ -162,6 +165,7 @@ var body: some View {
                     self.flagTapped(number)
                 }) {
                     Image(self.countries[number])
+                        // render the original image rather than recolor them as a button
                         .renderingMode(.original)
                         .clipShape(Capsule())
                         .overlay(Capsule().stroke(Color.black, lineWidth: 1))
@@ -179,3 +183,166 @@ var body: some View {
     }
 }
 ```
+
+### views and modifiers
+
+- in UIKit, they use classes for views rather than structs.
+- SwiftUI perfer to use structs for views.
+- making 1000 SwiftUI view happen in the blink of an eye.
+- **for SwiftUI developers, there is nothing behind our view.**
+- mofidier order matters
+- .padding() midifier add a little space around a view.
+
+```swift
+Button("Hello World") {
+    print(type(of: self.body))
+}    
+.background(Color.red)
+.frame(width: 200, height: 200)
+
+
+Text("Hello World")
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(Color.red)
+    .edgesIgnoringSafeArea(.all)
+```
+
+### 为什么是 some view
+
+- 不能光写view，因为swiftui要知道是什么view。
+- 具体写是什么view也不现实，因为有很多modifier。
+
+### environment modifier
+
+- font()是 environment modifier
+- blur()是 regular modifier
+- 注意下面两段代码的区别
+
+```swift
+VStack {
+    Text("Gryffindor")
+        .font(.largeTitle)
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.font(.title)
+
+VStack {
+    Text("Gryffindor")
+        .blur(radius: 0)
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.blur(radius: 5)
+```
+
+### views as properties
+
+```swift
+struct ContentView: View {
+    let motto1 = Text("Draco dormiens")
+    let motto2 = Text("nunquam titillandus")
+
+    var body: some View {
+        VStack {
+            motto1
+                .foregroundColor(.red)
+            motto2
+                .foregroundColor(.blue)
+        }
+    }
+}
+```
+
+### custom modifier 写ui神器
+
+```swift
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
+Text("Hello World")
+    .modifier(Title())
+
+extension View {
+    func titleStyle() -> some View {
+        self.modifier(Title())
+    }
+}
+
+Text("Hello World")
+    .titleStyle()
+
+// the watermark example
+struct Watermark: ViewModifier {
+    var text: String
+
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(Color.black)
+        }
+    }
+}
+
+extension View {
+    func watermarked(with text: String) -> some View {
+        self.modifier(Watermark(text: text))
+    }
+}
+
+Color.blue
+    .frame(width: 300, height: 200)
+    .watermarked(with: "Hacking with Swift")
+```
+
+### custom container 
+
+**🐂** https://www.hackingwithswift.com/books/ios-swiftui/custom-containers
+
+```swift
+struct GridStack<Content: View>: View {
+    let rows: Int
+    let columns: Int
+    let content: (Int, Int) -> Content
+
+    var body: some View {
+        VStack {
+            ForEach(0..<rows, id: \.self) { row in
+                HStack {
+                    ForEach(0..<self.columns, id: \.self) { column in
+                        self.content(row, column)
+                    }
+                }
+            }
+        }
+    }
+
+    init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
+        self.rows = rows
+        self.columns = columns
+        self.content = content
+    }
+}
+
+GridStack(rows: 4, columns: 4) { row, col in
+    // HStack {
+        Image(systemName: "\(row * 4 + col).circle")
+        Text("R\(row) C\(col)")
+    // }
+}
+```
+
