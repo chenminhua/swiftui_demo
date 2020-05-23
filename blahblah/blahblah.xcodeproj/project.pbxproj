@@ -17,6 +17,8 @@
 		CB8D17752478B992007A0833 /* blahblahUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D17742478B992007A0833 /* blahblahUITests.swift */; };
 		CB8D17832478BA21007A0833 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D17822478BA21007A0833 /* AudioRecorder.swift */; };
 		CB8D17852478BE59007A0833 /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D17842478BE59007A0833 /* RecordingsList.swift */; };
+		CB8D17872478C455007A0833 /* RecordingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D17862478C455007A0833 /* RecordingDataModel.swift */; };
+		CB8D17892478C594007A0833 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8D17882478C594007A0833 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		CB8D17762478B992007A0833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB8D17822478BA21007A0833 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		CB8D17842478BE59007A0833 /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
+		CB8D17862478C455007A0833 /* RecordingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDataModel.swift; sourceTree = "<group>"; };
+		CB8D17882478C594007A0833 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +109,10 @@
 			children = (
 				CB8D17522478B990007A0833 /* AppDelegate.swift */,
 				CB8D17822478BA21007A0833 /* AudioRecorder.swift */,
+				CB8D17882478C594007A0833 /* Helper.swift */,
 				CB8D17542478B990007A0833 /* SceneDelegate.swift */,
 				CB8D17562478B990007A0833 /* ContentView.swift */,
+				CB8D17862478C455007A0833 /* RecordingDataModel.swift */,
 				CB8D17842478BE59007A0833 /* RecordingsList.swift */,
 				CB8D17582478B992007A0833 /* Assets.xcassets */,
 				CB8D175D2478B992007A0833 /* LaunchScreen.storyboard */,
@@ -274,8 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8D17532478B990007A0833 /* AppDelegate.swift in Sources */,
+				CB8D17892478C594007A0833 /* Helper.swift in Sources */,
 				CB8D17552478B990007A0833 /* SceneDelegate.swift in Sources */,
 				CB8D17852478BE59007A0833 /* RecordingsList.swift in Sources */,
+				CB8D17872478C455007A0833 /* RecordingDataModel.swift in Sources */,
 				CB8D17832478BA21007A0833 /* AudioRecorder.swift in Sources */,
 				CB8D17572478B990007A0833 /* ContentView.swift in Sources */,
 			);
