@@ -13,6 +13,7 @@
 		8428C8FB25B4384E0030B0B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8428C8FA25B4384E0030B0B3 /* Preview Assets.xcassets */; };
 		8428C8FD25B4384E0030B0B3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428C8FC25B4384E0030B0B3 /* Persistence.swift */; };
 		8428C90025B4384E0030B0B3 /* closet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8428C8FE25B4384E0030B0B3 /* closet.xcdatamodeld */; };
+		84510C5B25DE435300557FFE /* CaptureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84510C5A25DE435300557FFE /* CaptureImageView.swift */; };
 		84788FEA25B4757C004F7299 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84788FE925B4757C004F7299 /* AddCategoryView.swift */; };
 		84788FEE25B47C08004F7299 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84788FED25B47C08004F7299 /* CategoryView.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		8428C8FC25B4384E0030B0B3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8428C8FF25B4384E0030B0B3 /* closet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = closet.xcdatamodel; sourceTree = "<group>"; };
 		8428C90125B4384E0030B0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84510C5A25DE435300557FFE /* CaptureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageView.swift; sourceTree = "<group>"; };
 		84788FE925B4757C004F7299 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		84788FED25B47C08004F7299 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				84788FE925B4757C004F7299 /* AddCategoryView.swift */,
+				84510C5A25DE435300557FFE /* CaptureImageView.swift */,
 				8428C8F325B4384D0030B0B3 /* closetApp.swift */,
 				8428C8F525B4384D0030B0B3 /* ContentView.swift */,
 				8428C8F725B4384E0030B0B3 /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84510C5B25DE435300557FFE /* CaptureImageView.swift in Sources */,
 				8428C8FD25B4384E0030B0B3 /* Persistence.swift in Sources */,
 				8428C90025B4384E0030B0B3 /* closet.xcdatamodeld in Sources */,
 				84788FEE25B47C08004F7299 /* CategoryView.swift in Sources */,
