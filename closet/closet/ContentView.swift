@@ -21,24 +21,45 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(categories) { category in
-                    NavigationLink(destination: Text("placeHolder")) {
-                        Text(category.name!)
+            ZStack {
+                Color.primary_color.edgesIgnoringSafeArea(.all)
+                VStack {
+                    List {
+                        ForEach(categories) { category in
+                            NavigationLink(destination: Text("placeHolder")) {
+                                Text(category.name!)
+                            }
+                        }
+                        .onDelete(perform: deleteCLCategory)
                     }
-                }
-                .onDelete(perform: deleteCLCategory)
+                    .navigationBarTitle("Closet")
+                    .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+                        self.showingAddScreen.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    })
+                    .sheet(isPresented: $showingAddScreen) {
+                        AddCategoryView().environment(\.managedObjectContext, self.viewContext)
+                    }
+                }.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: NavigationLazyView(
+                                        AddItemView(viewModel: AddItemViewModel())),
+                                       label: { Image("plus_icon").resizable().frame(width: 32.0, height: 32.0) })
+                        .padding().background(Color.main_color).cornerRadius(35)
+                    }
+                }.padding()
+                
             }
-            .navigationBarTitle("Closet")
-            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
-                self.showingAddScreen.toggle()
-            }) {
-                Image(systemName: "plus")
-            })
-            .sheet(isPresented: $showingAddScreen) {
-                AddCategoryView().environment(\.managedObjectContext, self.viewContext)
-            }
+//            .navigationBarHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
     
     private func deleteCLCategory(offsets: IndexSet) {

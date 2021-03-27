@@ -15,10 +15,10 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         let cats = ["衣服", "鞋子", "裤子"]
         for idx in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.createdat = Date()
+            let newItem = ItemCD(context: viewContext)
+            newItem.createdAt = Date()
             newItem.category = cats[idx % 3]
-            newItem.name = "item \(idx)"
+            newItem.title = "item \(idx)"
         }
         
         for cat in cats {

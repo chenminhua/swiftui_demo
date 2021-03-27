@@ -18,8 +18,8 @@ struct CategoryView: View {
 //            NSSortDescriptor(keyPath: \Item.createdat,ascending: true)],
 //        predicate: NSPredicate(format: "category == '\(category.name!)'")
 //    )
-    var fetchRequest: FetchRequest<Item>
-    var items: FetchedResults<Item> {
+    var fetchRequest: FetchRequest<ItemCD>
+    var items: FetchedResults<ItemCD> {
         fetchRequest.wrappedValue
     }
     
@@ -27,9 +27,9 @@ struct CategoryView: View {
     
     init(category: CLCategory) {
         self.category = category
-        fetchRequest = FetchRequest<Item>(
-            entity: Item.entity(),
-            sortDescriptors: [NSSortDescriptor(keyPath: \Item.createdat,ascending: true)],
+        fetchRequest = FetchRequest<ItemCD>(
+            entity: ItemCD.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \ItemCD.createdAt,ascending: true)],
             predicate: NSPredicate(format: "category = %@", category.name!))
     }
     
@@ -38,7 +38,7 @@ struct CategoryView: View {
         NavigationView {
             List {
                 ForEach(items, id: \.self) { item in
-                    Text(item.name!)
+                    Text(item.title!)
                 }.onDelete(perform: deleteItem)
             }
             .navigationBarTitle(category.name!)
