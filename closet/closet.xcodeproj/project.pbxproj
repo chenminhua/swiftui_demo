@@ -26,6 +26,7 @@
 		84D9087C260F12460065DF54 /* InterFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D9087B260F12460065DF54 /* InterFontModifier.swift */; };
 		84D90881260F18D60065DF54 /* configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D90880260F18D60065DF54 /* configs.swift */; };
 		84D90884260F22460065DF54 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D90883260F22460065DF54 /* DismissKeyboard.swift */; };
+		84D90888260F350B0065DF54 /* DropdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D90887260F350B0065DF54 /* DropdownButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		84D9087B260F12460065DF54 /* InterFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterFontModifier.swift; sourceTree = "<group>"; };
 		84D90880260F18D60065DF54 /* configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = configs.swift; sourceTree = "<group>"; };
 		84D90883260F22460065DF54 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		84D90887260F350B0065DF54 /* DropdownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				84D90878260F12160065DF54 /* TextView.swift */,
 				84D9087B260F12460065DF54 /* InterFontModifier.swift */,
 				84D90883260F22460065DF54 /* DismissKeyboard.swift */,
+				84D90887260F350B0065DF54 /* DropdownButton.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				84D9086F260F0C020065DF54 /* AttachmentHandler.swift in Sources */,
 				84D90881260F18D60065DF54 /* configs.swift in Sources */,
+				84D90888260F350B0065DF54 /* DropdownButton.swift in Sources */,
 				8428C8FD25B4384E0030B0B3 /* Persistence.swift in Sources */,
 				8428C90025B4384E0030B0B3 /* closet.xcdatamodeld in Sources */,
 				84D9087C260F12460065DF54 /* InterFontModifier.swift in Sources */,

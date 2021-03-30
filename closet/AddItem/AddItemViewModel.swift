@@ -17,8 +17,8 @@ class AddItemViewModel: ObservableObject {
     @Published var note = ""
     @Published var category = ""
     @Published var showTypeDrop = false
-    @Published var showTagDrop = false
-    
+    @Published var typeTitle = ""
+    @Published var selectedCategory = ""
     
     @Published var imageUpdated = false // When transaction edit, check if attachment is updated?
     @Published var imageAttached: UIImage? = nil
@@ -104,6 +104,7 @@ class AddItemViewModel: ObservableObject {
         item.buyOn = buyon
         item.note = note
         item.amount = amount
+        item.category = selectedCategory
         do {
             try managedObjectContext.save()
             closePresenter = true

@@ -15,7 +15,21 @@ struct AddItemView: View {
     @State private var confirmDelete = false
     @State var showAttachSheet = false
     
+    var fetchRequest: FetchRequest<CLCategory> = FetchRequest<CLCategory>(entity: CLCategory.entity(), sortDescriptors: [])
+    var expense: FetchedResults<CLCategory> { fetchRequest.wrappedValue }
+
+    
     @StateObject var viewModel: AddItemViewModel
+    
+    var typeOptions: [DropdownOption] {
+        // todo fix panic
+//        if fetchRequest.wrappedValue.count > 0 {
+//            viewModel.typeTitle = fetchRequest.wrappedValue[0].name!
+//        }
+        return fetchRequest.wrappedValue.map {
+            return DropdownOption(key: $0.name!, val: $0.name!)
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -23,12 +37,11 @@ struct AddItemView: View {
                 Color.primary_color.edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    
                     Group {
                         if viewModel.itemObj == nil {
-                            ToolbarModelView(title: "Add Transaction") { self.presentationMode.wrappedValue.dismiss() }
+                            ToolbarModelView(title: "Add Item") { self.presentationMode.wrappedValue.dismiss() }
                         } else {
-                            ToolbarModelView(title: "Edit Transaction", button1Icon: IMAGE_DELETE_ICON) { self.presentationMode.wrappedValue.dismiss() }
+                            ToolbarModelView(title: "Edit Item", button1Icon: IMAGE_DELETE_ICON) { self.presentationMode.wrappedValue.dismiss() }
                                 button1Method: { self.confirmDelete = true }
                         }
                     }.alert(isPresented: $confirmDelete,
@@ -57,6 +70,17 @@ struct AddItemView: View {
                                 .frame(height: 50).padding(.leading, 16)
                                 .background(Color.secondary_color)
                                 .cornerRadius(4).keyboardType(.decimalPad)
+                            
+                            DropdownButton(shouldShowDropdown: $viewModel.showTypeDrop, displayText: $viewModel.typeTitle,
+                                           options: typeOptions, mainColor: Color.text_primary_color,
+                                           backgroundColor: Color.secondary_color, cornerRadius: 4, buttonHeight: 50) { key in
+                                let selectedObj = typeOptions.filter({ $0.key == key }).first
+                                if let object = selectedObj {
+                                    viewModel.typeTitle = object.val
+                                    viewModel.selectedCategory = key
+                                }
+                                viewModel.showTypeDrop = false
+                            }
                             
                             TextField("Note", text: $viewModel.note)
                                 .modifier(InterFont(.regular, size: 16))
@@ -130,10 +154,10 @@ struct AddItemView: View {
         }
     }
 }
-
-struct AddItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddItemView(viewModel: AddItemViewModel())
-    }
-}
-
+//
+//struct AddItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddItemView(viewModel: AddItemViewModel())
+//    }
+//}
+//
